@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PackageController;
+use App\Livewire\Settings\PackageComponent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,12 +22,17 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
+
+    // Controllers
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+
+    //Livewire Components
+
+    Route::get('packages', PackageComponent::class)->name('packages');
+    Route::post('packages', [PackageController::class, 'uplodadModulePackage'])->name('upload-module');
+
 });

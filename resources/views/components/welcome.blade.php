@@ -1,96 +1,303 @@
-<div class="p-6 lg:p-8 bg-white border-b border-gray-200">
-    <x-application-logo class="block h-12 w-auto" />
-
-    <h1 class="mt-8 text-2xl font-medium text-gray-900">
-        Welcome to your Jetstream application!
-    </h1>
-
-    <p class="mt-6 text-gray-500 leading-relaxed">
-        Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is designed
-        to help you build your application using a development environment that is simple, powerful, and enjoyable. We believe
-        you should love expressing your creativity through programming, so we have spent time carefully crafting the Laravel
-        ecosystem to be a breath of fresh air. We hope you love it.
-    </p>
-</div>
-
-<div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8">
-    <div>
-        <div class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-6 h-6 stroke-gray-400">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-            </svg>
-            <h2 class="ms-3 text-xl font-semibold text-gray-900">
-                <a href="https://laravel.com/docs">Documentation</a>
-            </h2>
+<div class="content-wrapper">
+    <div class="row">
+    <div class="col-md-12 grid-margin">
+        <div class="row">
+        <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+            <h3 class="font-weight-bold">Welcome{{ auth()->user()->name }}</h3>
+            <h6 class="font-weight-normal mb-0">All systems are running smoothly! You have <span class="text-primary">3 unread alerts!</span></h6>
         </div>
+        <div class="col-12 col-xl-4">
+            <div class="justify-content-end d-flex">
+            <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
+            <button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button" id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <i class="mdi mdi-calendar"></i> Today (10 Jan 2021)
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2">
+                <a class="dropdown-item" href="#">January - March</a>
+                <a class="dropdown-item" href="#">March - June</a>
+                <a class="dropdown-item" href="#">June - August</a>
+                <a class="dropdown-item" href="#">August - November</a>
+            </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card tale-bg">
+        <div class="card-people mt-auto">
+            <img src="images/dashboard/people.svg" alt="people">
+            <div class="weather-info">
+            <div class="d-flex">
+                <div>
+                <h2 class="mb-0 font-weight-normal"><i class="icon-sun mr-2"></i>31<sup>C</sup></h2>
+                </div>
+                <div class="ml-2">
+                <h4 class="location font-weight-normal">Bangalore</h4>
+                <h6 class="font-weight-normal">India</h6>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="col-md-6 grid-margin transparent">
+        <div class="row">
+        <div class="col-md-6 mb-4 stretch-card transparent">
+            <div class="card card-tale">
+            <div class="card-body">
+                <p class="mb-4">Today’s Loans</p>
+                <p class="fs-30 mb-2">4006</p>
+                <p>10.00% (30 days)</p>
+            </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4 stretch-card transparent">
+            <div class="card card-dark-blue">
+            <div class="card-body">
+                <p class="mb-4">Total Loans</p>
+                <p class="fs-30 mb-2">61344</p>
+                <p>22.00% (30 days)</p>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+            <div class="card card-light-blue">
+            <div class="card-body">
+                <p class="mb-4">Number of Farmers</p>
+                <p class="fs-30 mb-2">34040</p>
+                <p>2.00% (30 days)</p>
+            </div>
+            </div>
+        </div>
+        <div class="col-md-6 stretch-card transparent">
+            <div class="card card-light-danger">
+            <div class="card-body">
+                <p class="mb-4">Pending Loan Requests</p>
+                <p class="fs-30 mb-2">47033</p>
+                <p>0.22% (30 days)</p>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
 
-        <p class="mt-4 text-gray-500 text-sm leading-relaxed">
-            Laravel has wonderful documentation covering every aspect of the framework. Whether you're new to the framework or have previous experience, we recommend reading all of the documentation from beginning to end.
-        </p>
-
-        <p class="mt-4 text-sm">
-            <a href="https://laravel.com/docs" class="inline-flex items-center font-semibold text-indigo-700">
-                Explore the documentation
-
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="ms-1 w-5 h-5 fill-indigo-500">
-                    <path fill-rule="evenodd" d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z" clip-rule="evenodd" />
-                </svg>
+    <div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card position-relative">
+        <div class="card-body">
+            <div id="detailedReports" class="carousel slide detailed-report-carousel position-static pt-2" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                <div class="row">
+                    <div class="col-md-12 col-xl-3 d-flex flex-column justify-content-start">
+                    <div class="ml-xl-4 mt-3">
+                    <p class="card-title">Detailed Reports</p>
+                        <h1 class="text-primary">ZMW 34,000</h1>
+                        <h3 class="font-weight-500 mb-xl-4 text-primary">Lusaka Province</h3>
+                        <p class="mb-2 mb-xl-0">The total number of sessions within the date range. It is the period time a user is actively engaged with your website, page or app, etc</p>
+                    </div>
+                    </div>
+                    <div class="col-md-12 col-xl-9">
+                    <div class="row">
+                        <div class="col-md-6 border-right">
+                        <div class="table-responsive mb-3 mb-md-0 mt-3">
+                            <table class="table table-borderless report-table">
+                            <tr>
+                                <td class="text-muted">Illinois</td>
+                                <td class="w-100 px-0">
+                                <div class="progress progress-md mx-4">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                </td>
+                                <td><h5 class="font-weight-bold mb-0">713</h5></td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted">Washington</td>
+                                <td class="w-100 px-0">
+                                <div class="progress progress-md mx-4">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                </td>
+                                <td><h5 class="font-weight-bold mb-0">583</h5></td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted">Mississippi</td>
+                                <td class="w-100 px-0">
+                                <div class="progress progress-md mx-4">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                </td>
+                                <td><h5 class="font-weight-bold mb-0">924</h5></td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted">California</td>
+                                <td class="w-100 px-0">
+                                <div class="progress progress-md mx-4">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                </td>
+                                <td><h5 class="font-weight-bold mb-0">664</h5></td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted">Maryland</td>
+                                <td class="w-100 px-0">
+                                <div class="progress progress-md mx-4">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                </td>
+                                <td><h5 class="font-weight-bold mb-0">560</h5></td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted">Alaska</td>
+                                <td class="w-100 px-0">
+                                <div class="progress progress-md mx-4">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                </td>
+                                <td><h5 class="font-weight-bold mb-0">793</h5></td>
+                            </tr>
+                            </table>
+                        </div>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                        <canvas id="north-america-chart"></canvas>
+                        <div id="north-america-legend"></div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div class="carousel-item">
+                <div class="row">
+                    <div class="col-md-12 col-xl-3 d-flex flex-column justify-content-start">
+                    <div class="ml-xl-4 mt-3">
+                    <p class="card-title">Detailed Reports</p>
+                        <h1 class="text-primary">ZMW 12,300</h1>
+                        <h3 class="font-weight-500 mb-xl-4 text-primary">Southern Province</h3>
+                        <p class="mb-2 mb-xl-0">The total number of sessions within the date range. It is the period time a user is actively engaged with your website, page or app, etc</p>
+                    </div>
+                    </div>
+                    <div class="col-md-12 col-xl-9">
+                    <div class="row">
+                        <div class="col-md-6 border-right">
+                        <div class="table-responsive mb-3 mb-md-0 mt-3">
+                            <table class="table table-borderless report-table">
+                            <tr>
+                                <td class="text-muted">Illinois</td>
+                                <td class="w-100 px-0">
+                                <div class="progress progress-md mx-4">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                </td>
+                                <td><h5 class="font-weight-bold mb-0">713</h5></td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted">Washington</td>
+                                <td class="w-100 px-0">
+                                <div class="progress progress-md mx-4">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                </td>
+                                <td><h5 class="font-weight-bold mb-0">583</h5></td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted">Mississippi</td>
+                                <td class="w-100 px-0">
+                                <div class="progress progress-md mx-4">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                </td>
+                                <td><h5 class="font-weight-bold mb-0">924</h5></td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted">California</td>
+                                <td class="w-100 px-0">
+                                <div class="progress progress-md mx-4">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                </td>
+                                <td><h5 class="font-weight-bold mb-0">664</h5></td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted">Maryland</td>
+                                <td class="w-100 px-0">
+                                <div class="progress progress-md mx-4">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                </td>
+                                <td><h5 class="font-weight-bold mb-0">560</h5></td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted">Alaska</td>
+                                <td class="w-100 px-0">
+                                <div class="progress progress-md mx-4">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                </td>
+                                <td><h5 class="font-weight-bold mb-0">793</h5></td>
+                            </tr>
+                            </table>
+                        </div>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                        <canvas id="south-america-chart"></canvas>
+                        <div id="south-america-legend"></div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#detailedReports" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
             </a>
-        </p>
-    </div>
-
-    <div>
-        <div class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-6 h-6 stroke-gray-400">
-                <path stroke-linecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
-            </svg>
-            <h2 class="ms-3 text-xl font-semibold text-gray-900">
-                <a href="https://laracasts.com">Laracasts</a>
-            </h2>
-        </div>
-
-        <p class="mt-4 text-gray-500 text-sm leading-relaxed">
-            Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-        </p>
-
-        <p class="mt-4 text-sm">
-            <a href="https://laracasts.com" class="inline-flex items-center font-semibold text-indigo-700">
-                Start watching Laracasts
-
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="ms-1 w-5 h-5 fill-indigo-500">
-                    <path fill-rule="evenodd" d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z" clip-rule="evenodd" />
-                </svg>
+            <a class="carousel-control-next" href="#detailedReports" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
             </a>
-        </p>
+            </div>
+        </div>
+        </div>
+    </div>
     </div>
 
-    <div>
-        <div class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-6 h-6 stroke-gray-400">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-            </svg>
-            <h2 class="ms-3 text-xl font-semibold text-gray-900">
-                <a href="https://tailwindcss.com/">Tailwind</a>
-            </h2>
+
+    <div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+        <div class="card-body">
+            <p class="card-title">Latest 10 Farmers</p>
+            <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                <table id="exampleData" class="display expandable-table" style="width:100%">
+                    <thead>
+                    <tr>
+                        <th>ID#</th>
+                        <th>Name</th>
+                        <th>Farming Category</th>
+                        <th>NRC No.</th>
+                        <th>Date of Birth</th>
+                        <th>Status</th>
+                        <th>Updated at</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                </table>
+                </div>
+            </div>
+            </div>
+            </div>
         </div>
 
-        <p class="mt-4 text-gray-500 text-sm leading-relaxed">
-            Laravel Jetstream is built with Tailwind, an amazing utility first CSS framework that doesn't get in your way. You'll be amazed how easily you can build and maintain fresh, modern designs with this wonderful framework at your fingertips.
-        </p>
-    </div>
 
-    <div>
-        <div class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-6 h-6 stroke-gray-400">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-            </svg>
-            <h2 class="ms-3 text-xl font-semibold text-gray-900">
-                Authentication
-            </h2>
         </div>
-
-        <p class="mt-4 text-gray-500 text-sm leading-relaxed">
-            Authentication and registration views are included with Laravel Jetstream, as well as support for user email verification and resetting forgotten passwords. So, you're free to get started with what matters most: building your application.
-        </p>
     </div>
 </div>
