@@ -16,4 +16,5 @@ use Modules\LoanManagement\App\Http\Controllers\LoanManagementController;
 
 Route::group([], function () {
     Route::resource('loanmanagement', LoanManagementController::class)->names('loanmanagement');
+    Route::resource('borrowers', LoanManagementController::class)->names('borrowers');
 });

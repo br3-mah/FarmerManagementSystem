@@ -32,8 +32,8 @@
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
 
         {{-- <a class="fw-bold text-xl mr-5" href="index-2.html">Farm Management</a> --}}
-        <a class="navbar-brand brand-logo mr-5" href="index-2.html"><img src="https://goodnatureagro.com/app/uploads/2020/03/GNA-Source.png" class="mr-2" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="index-2.html"><img src="https://pbs.twimg.com/profile_images/1132282909379973121/wufxn9_i_400x400.png" alt="logo"/></a>
+        <a class="navbar-brand brand-logo mr-5" href="{{ route('dashboard') }}"><img src="https://goodnatureagro.com/app/uploads/2020/03/GNA-Source.png" class="mr-2" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="{{ route('dashboard') }}"><img src="https://pbs.twimg.com/profile_images/1132282909379973121/wufxn9_i_400x400.png" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -102,7 +102,7 @@
           </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="images/faces/face28.jpg" alt="profile"/>
+              <img src="https://img.freepik.com/premium-photo/3d-toy-farm-animals-icon-fun-educational-playset_762678-103778.jpg" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
@@ -357,13 +357,18 @@
               </ul>
             </div>
           </li>
-                    {{-- Dynamic Modules --}}
+            {{-- Dynamic Modules --}}
             @php
                 use Nwidart\Modules\Facades\Module;
                 $enabledModules = Module::allEnabled();
             @endphp
 
             @foreach ($enabledModules as $module)
+                @php
+                    $menuPath = base_path("Modules/" . $module->getName() . "/menu.json");
+                    $menuItems = file_exists($menuPath) ? json_decode(file_get_contents($menuPath), true) : [];
+                @endphp
+
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#{{ strtolower($module->getName()) }}" aria-expanded="false" aria-controls="{{ strtolower($module->getName()) }}">
                         <i class="icon-doc menu-icon"></i>
@@ -372,11 +377,19 @@
                     </a>
                     <div class="collapse" id="{{ strtolower($module->getName()) }}">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="{{ route(strtolower($module->getName()) . '.index') }}">Manage {{ $module->getName() }}</a></li>
+                            @foreach ($menuItems as $menuItem)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route($menuItem['route']) }}">
+                                        <i class="{{ $menuItem['icon'] }}"></i>
+                                        {{ $menuItem['title'] }}
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </li>
             @endforeach
+
           {{--<li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
               <i class="icon-contract menu-icon"></i>

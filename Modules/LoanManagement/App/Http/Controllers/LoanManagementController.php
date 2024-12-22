@@ -3,9 +3,11 @@
 namespace Modules\LoanManagement\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Farmer;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\LoanManagement\App\Models\Loan;
 
 class LoanManagementController extends Controller
 {
@@ -14,15 +16,29 @@ class LoanManagementController extends Controller
      */
     public function index()
     {
-        return view('loanmanagement::index');
+        return view('loanmanagement::loans.index');
     }
 
+    // Display loans for a specific farmer
+    public function list()
+    {
+        $loans = Loan::get();
+        return view('loan-management::loans.list', compact('farmer', 'loans'));
+    }
+
+    // Display loans for a specific farmer
+    public function history($farmerId)
+    {
+        $farmer = Farmer::findOrFail($farmerId);
+        $loans = $farmer->loans;
+        return view('loan-management::loans.history', compact('farmer', 'loans'));
+    }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('loanmanagement::create');
+        return view('loanmanagement::loans.create');
     }
 
     /**
@@ -38,7 +54,7 @@ class LoanManagementController extends Controller
      */
     public function show($id)
     {
-        return view('loanmanagement::show');
+        return view('loanmanagement::loans.show');
     }
 
     /**
@@ -46,7 +62,7 @@ class LoanManagementController extends Controller
      */
     public function edit($id)
     {
-        return view('loanmanagement::edit');
+        return view('loanmanagement::loans.edit');
     }
 
     /**

@@ -1,0 +1,13 @@
+[
+    {
+        "title": "Dashboard",
+        "route": "loanmanagement.index",
+        "icon": "icon-dashboard"
+    },
+    {
+        "title": "Create Loan",
+        "route": "loanmanagement.create",
+        "icon": "icon-create"
+    }
+
+]

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="content-wrapper">
-    <h1>Loan Management</h1>
+    <h1>Loan Management Overview</h1>
 
     <p>Module: {!! config('loanmanagement.name') !!}</p>
 </div>
