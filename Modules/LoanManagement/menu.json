@@ -5,6 +5,11 @@
         "icon": "icon-dashboard"
     },
     {
+        "title": "Loan Lists",
+        "route": "loanmanagement.list",
+        "icon": "icon-list"
+    },
+    {
         "title": "Create Loan",
         "route": "loanmanagement.create",
         "icon": "icon-create"

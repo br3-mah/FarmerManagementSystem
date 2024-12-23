@@ -29,7 +29,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         return view('dashboard');
     })->name('dashboard');
 
-
     //Livewire Components
 
     Route::get('packages', PackageComponent::class)->name('packages');
