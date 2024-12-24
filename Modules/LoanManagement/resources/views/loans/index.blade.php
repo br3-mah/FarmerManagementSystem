@@ -69,9 +69,9 @@
     <div class="main-content">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="mb-0">Loan Management Overview</h2>
-            <button class="btn btn-gradient">
+            <a href="{{ route('loanmanagement.create') }}" class="btn btn-gradient">
                 <i class="fas fa-plus me-2"></i>New Loan
-            </button>
+            </a>
         </div>
 
         <!-- Stats Row -->

@@ -315,8 +315,8 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Add New Farmer</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">List of Farmers</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('farmers') }}">Add New Farmer</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('farmers') }}">List of Farmers</a></li>
               </ul>
             </div>
           </li>
