@@ -3,12 +3,11 @@
 namespace App\Livewire\Core;
 
 use App\Models\Farmer;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
-class FarmerComponent extends Component
+class ProspectComponent extends Component
 {
+
     public $farmers;
     public $showModal = false; // For toggling the modal
     public $user_id, $fname, $lname, $password, $farm_name, $farm_address, $type_of_farming; // Form inputs
@@ -25,7 +24,7 @@ class FarmerComponent extends Component
     public function render()
     {
         $this->farmers = Farmer::with('user')->get();
-        return view('livewire.core.farmer-component')->layout('layouts.app');
+        return view('livewire.core.prospect-component')->layout('layouts.app');
     }
 
     public function createFarmer()

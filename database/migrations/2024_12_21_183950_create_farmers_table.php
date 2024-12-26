@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('mobile_money_number')->nullable(); // For payments or loans
             $table->string('bank_account_number')->nullable(); // For payments or loans
             $table->string('bank_name')->nullable();
+            $table->integer('is_prospect')->default(0);
             $table->timestamps();
         });
     }

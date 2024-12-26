@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\PackageController;
 use App\Livewire\Core\FarmerComponent;
+use App\Livewire\Core\FarmerEditComponent;
+use App\Livewire\Core\FarmerViewComponent;
+use App\Livewire\Core\ProspectComponent;
 use App\Livewire\Settings\PackageComponent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -32,7 +35,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 
     //Livewire Components
 
+    Route::get('prospects', ProspectComponent::class)->name('prospects');
+    
     Route::get('farmers', FarmerComponent::class)->name('farmers');
+    Route::get('view-farmer', FarmerViewComponent::class)->name('vfarmers');
+    Route::get('edit-farmer', FarmerEditComponent::class)->name('efarmers');
     Route::get('packages', PackageComponent::class)->name('packages');
     Route::post('packages', [PackageController::class, 'uplodadModulePackage'])->name('upload-module');
 

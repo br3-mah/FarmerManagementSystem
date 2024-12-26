@@ -18,6 +18,7 @@ class Farmer extends Model
         'mobile_money_number',
         'bank_account_number',
         'bank_name',
+        'is_prospect',
     ];
 
     public function user(){
