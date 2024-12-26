@@ -6,7 +6,7 @@
                 <p class="card-description">List of prospects below</p>
                 <div class="mb-3">
                     <button class="btn btn-success btn-icon-text" wire:click="createFarmer">
-                        <i class="mdi mdi-plus-circle-outline"></i> Create Farmer
+                        <i class="mdi mdi-plus-circle-outline"></i> Create Prospect
                     </button>
                 </div>
                 <div class="table-responsive">
@@ -56,15 +56,16 @@
                     </div>
                     <div class="modal-body">
                         <form>
+
                             <div class="mb-3">
-                                <label for="user_id" class="form-label">User</label>
-                                <select wire:model="user_id" class="form-control" id="user_id">
-                                    <option value="">Select User</option>
-                                    @foreach (App\Models\User::all() as $user)
-                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('user_id') <span class="text-danger">{{ $message }}</span> @enderror
+                                <label for="fname" class="form-label">First Name</label>
+                                <input type="text" wire:model="fname" class="form-control" id="fname">
+                                @error('fname') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="lname" class="form-label">Surname</label>
+                                <input type="text" wire:model="lname" class="form-control" id="lname">
+                                @error('lname') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="farm_name" class="form-label">Farm Name</label>
