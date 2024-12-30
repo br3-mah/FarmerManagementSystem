@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('loans', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('farmer_id')->constrained('farmers')->onDelete('cascade');
+            $table->unsignedBigInteger('farmer_id');
             $table->string('loan_type')->nullable();
             $table->decimal('loan_amount', 10, 2);
             $table->decimal('interest_rate', 5, 2);
