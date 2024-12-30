@@ -102,7 +102,7 @@
           </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="https://img.freepik.com/premium-photo/3d-toy-farm-animals-icon-fun-educational-playset_762678-103778.jpg" alt="profile"/>
+             {{ auth()->user()->fname.' '.auth()->user()->lname }}
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
@@ -120,11 +120,7 @@
 
             </div>
           </li>
-          <li class="nav-item nav-settings d-none d-lg-flex">
-            <a class="nav-link" href="#">
-              <i class="icon-ellipsis"></i>
-            </a>
-          </li>
+
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="icon-menu"></span>
@@ -435,7 +431,7 @@
         {{ $slot }}
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
-        
+
         <!-- partial -->
       </div>
       <!-- main-panel ends -->

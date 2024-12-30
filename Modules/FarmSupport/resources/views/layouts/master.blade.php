@@ -99,7 +99,7 @@
           </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="https://img.freepik.com/premium-photo/3d-toy-farm-animals-icon-fun-educational-playset_762678-103778.jpg" alt="profile"/>
+             {{ auth()->user()->fname.' '.auth()->user()->lname }}
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                 <a href="{{ route('settings') }}" class="dropdown-item">

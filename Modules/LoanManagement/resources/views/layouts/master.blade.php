@@ -58,9 +58,7 @@
               <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
-                  <div class="preview-icon bg-success">
-                    <i class="ti-info-alt mx-0"></i>
-                  </div>
+             
                 </div>
                 <div class="preview-item-content">
                   <h6 class="preview-subject font-weight-normal">Application Error</h6>
@@ -99,7 +97,7 @@
           </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown2">
-              <img src="https://img.freepik.com/premium-photo/3d-toy-farm-animals-icon-fun-educational-playset_762678-103778.jpg" alt="profile"/>
+             {{ auth()->user()->fname.' '.auth()->user()->lname }}
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown2">
                 <a href="{{ route('settings') }}" class="dropdown-item">
@@ -116,11 +114,7 @@
                 </a>
             </div>
           </li>
-          <li class="nav-item nav-settings d-none d-lg-flex">
-            <a class="nav-link" href="#">
-              <i class="icon-ellipsis"></i>
-            </a>
-          </li>
+
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="icon-menu"></span>
