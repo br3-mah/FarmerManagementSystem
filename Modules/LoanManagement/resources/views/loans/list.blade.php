@@ -13,6 +13,7 @@
                         <th>Loan Amount</th>
                         <th>Interest Rate</th>
                         <th>Repayment Duration</th>
+                        <th>Repayment Amount</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
@@ -21,9 +22,11 @@
                     @foreach ($loans as $loan)
                     <tr>
                         <td>{{ $loan->farmer->user->fname.' '.$loan->farmer->user->lname }}</td>
-                        <td>{{ $loan->loan_amount }}</td>
+                        <td>K{{ number_format($loan->loan_amount, 2) }}</td>
                         <td>{{ $loan->interest_rate }}%</td>
                         <td>{{ $loan->repayment_duration }} months</td>
+                        <td>K{{ number_format($loan->loan_amount + ($loan->loan_amount * $loan->interest_rate / 100), 2) }}
+                        </td>
                         <td>
                             <span
                                 class="badge shadow
@@ -36,6 +39,7 @@
                             </span>
                         </td>
                         <td>
+                            @if ($loan->status !== 'repaid')
                             {{-- Approve or Reject Loan --}}
                             <form action="{{ route('loanmanagement.updateStatus', $loan->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Are you sure you want to update the loan status?');">
                                 @csrf
@@ -52,6 +56,9 @@
                                     <button type="submit" class="btn-xs btn btn-warning">Mark Repaid</button>
                                 @endif
                             </form>
+                            @else
+                                <button disabled class="btn-xs btn btn-default"><b>CLOSED</b></button>
+                            @endif
                         </td>
                     </tr>
                     @endforeach
