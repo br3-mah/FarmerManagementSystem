@@ -278,73 +278,100 @@
 
     </style>
     <div class="content-wrapper">
+
         <div class="card">
             <h4 class="card-title">Module Management</h4>
             <p class="card-description">List of available tools and modules below</p>
             <div>
-                      <!-- Trigger Button -->
-            <button class="btn-open-modal btn btn-sm" wire:click="$set('showModal', true)">
-                <i class="fas fa-cloud-upload-alt"></i> Upload Module
-            </button>
+                <!-- Trigger Button -->
+                <button class="btn-open-modal btn btn-sm" wire:click="$set('showModal', true)">
+                    <i class="fas fa-cloud-upload-alt"></i> Upload Module
+                </button>
             </div>
 
             <!-- Modal -->
             @if($showModal)
-                <div class="modal-overlay">
-                    <div class="modal-container">
-                        <button class="close-modal" wire:click="$set('showModal', false)">×</button>
-                        <h4>Upload Module Package</h4>
-                        <form id="zipUploadForm" enctype="multipart/form-data" method="POST" action="{{ route('upload-module') }}">
-                            @csrf
-                            <div class="upload-area">
-                                <i class="fas fa-cloud-upload-alt upload-icon"></i>
-                                <label class="file-label">Drop your ZIP file here</label>
-                                <p class="file-hint">or click to browse files</p>
-                                <input type="file" class="file-input" id="zipFile" name="zipFile" accept=".zip" required>
+            <div class="modal-overlay">
+                <div class="modal-container">
+                    <button class="close-modal" wire:click="$set('showModal', false)">×</button>
+                    <h4>Upload Module Package</h4>
+                    {{-- wire:submit.prevent="uploadFile" --}}
+                    <form id="zipUploadForm" enctype="multipart/form-data" method="POST" action="{{ route('upload-module') }}">
+                        @csrf
+                        <div class="upload-area" id="uploadArea">
+                            <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                            <label class="file-label">Drop your ZIP or RAR file here</label>
+                            <p class="file-hint">or click to browse files</p>
+                            <input type="file" class="file-input" id="moduleFile" name="moduleFile" accept=".zip,.rar" required wire:model="file" onchange="previewFile()">
+                            <!-- Preview Section -->
+                            <div id="filePreview" style="display: none; margin-top: 1rem;">
+                                <i class="fas fa-file-archive" style="font-size: 3rem; color: #4b915e;"></i>
+                                <p id="fileName"></p>
+                                <div id="uploadingIndicator" style="display: none;">Uploading...</div>
                             </div>
-                            <button type="submit" class="upload-btn">
-                                <i class="fas fa-upload"></i> Upload File
-                            </button>
-                        </form>
-                    </div>
+                        </div>
+                        <button type="submit" class="upload-btn">
+                            <i class="fas fa-upload"></i> Upload File
+                        </button>
+                    </form>
                 </div>
+            </div>
             @endif
 
             @if(session()->has('message'))
-                <div class="alert alert-success">
-                    {{ session('message') }}
-                </div>
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
             @endif
         </div>
 
+        <!-- JavaScript for File Preview and Upload Indicator -->
+        <script>
+            function previewFile() {
+                const fileInput = document.getElementById('zipFile');
+                const filePreview = document.getElementById('filePreview');
+                const fileName = document.getElementById('fileName');
+                const uploadingIndicator = document.getElementById('uploadingIndicator');
+
+                if (fileInput.files.length > 0) {
+                    const file = fileInput.files[0];
+                    fileName.textContent = file.name;
+                    filePreview.style.display = 'block';
+
+                    // Show uploading indicator when the file is selected
+                    uploadingIndicator.style.display = 'block';
+
+                    // Simulate upload delay for demonstration (remove in production)
+                    setTimeout(() => {
+                        uploadingIndicator.style.display = 'none'; // Hide after "upload"
+                    }, 2000); // Adjust time as needed
+                }
+            }
+        </script>
 
         <div class="card-body">
             <div class="modules-grid">
                 @foreach($modules as $module)
-                    <div class="module-card">
-                        <i class="fas fa-puzzle-piece"></i>
-                        <h3>{{ $module['name'] }}</h3>
-                        @if($module['isEnabled'])
-                            <button class="btn-deactivate" wire:click="deactivateModule('{{ $module['name'] }}')">
-                                Deactivate
-                            </button>
-                        @else
-                            <button class="btn-activate" wire:click="activateModule('{{ $module['name'] }}')">
-                                Activate
-                            </button>
-                        @endif
-                        <button class="btn-delete" wire:click="deleteModule('{{ $module['name'] }}')">
-                            Delete
-                        </button>
-                    </div>
+                <div class="module-card">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <h3>{{ $module['name'] }}</h3>
+                    @if($module['isEnabled'])
+                    <button class="btn-deactivate" wire:click="deactivateModule('{{ $module['name'] }}')">Deactivate</button>
+                    @else
+                    <button class="btn-activate" wire:click="activateModule('{{ $module['name'] }}')">Activate</button>
+                    @endif
+                    <button class="btn-delete" wire:click="deleteModule('{{ $module['name'] }}')">Delete</button>
+                </div>
                 @endforeach
             </div>
         </div>
 
         @if(session()->has('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
-            </div>
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
         @endif
     </div>
+
+
 </div>

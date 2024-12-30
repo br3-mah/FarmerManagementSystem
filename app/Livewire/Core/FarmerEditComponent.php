@@ -13,6 +13,7 @@ class FarmerEditComponent extends Component
     public $farm_name;
     public $farm_address;
     public $type_of_farming;
+    public $is_prospect;
 
     public function mount()
     {
@@ -24,6 +25,7 @@ class FarmerEditComponent extends Component
         $this->farm_name = $farmer->farm_name;
         $this->farm_address = $farmer->farm_address;
         $this->type_of_farming = $farmer->type_of_farming;
+        $this->is_prospect = $farmer->is_prospect == 1 ? true : false;
     }
 
     public function updateFarmer()
@@ -40,6 +42,7 @@ class FarmerEditComponent extends Component
         $farmer->farm_name = $this->farm_name;
         $farmer->farm_address = $this->farm_address;
         $farmer->type_of_farming = $this->type_of_farming;
+        $farmer->is_prospect = $this->is_prospect ? 1 : 0;
         $farmer->save();
 
         $farmer->user->update([
@@ -48,7 +51,7 @@ class FarmerEditComponent extends Component
         ]);
 
         session()->flash('message', 'Farmer details updated successfully.');
-        return redirect()->route('farmers'); // Adjust this route as needed
+        return redirect()->back(); // Adjust this route as needed
     }
 
     public function render()

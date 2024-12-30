@@ -32,6 +32,13 @@
                         <input type="text" wire:model="type_of_farming" class="form-control" id="type_of_farming">
                         @error('type_of_farming') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
+
+                    <!-- Prospect Switch Field -->
+                    <div class="mb-3 form-check form-switch bg-light p-4 rounded">
+                        <input type="checkbox" wire:model.lazy="is_prospect" class="form-check-input" id="is_prospect">
+                        <label class="form-check-label text-primary" for="is_prospect">Prospect farmer ?</label>
+                    </div>
+
                     <button type="submit" class="btn btn-primary">Update</button>
                 </form>
             </div>

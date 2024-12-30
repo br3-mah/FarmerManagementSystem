@@ -12,7 +12,7 @@
             <label for="farmer_id">Farmer</label>
             <select name="farmer_id" id="farmer_id" class="form-control">
                 @foreach ($farmers as $farmer)
-                <option value="{{ $farmer->id }}">{{ $farmer->user->name }} {{ $farmer->farmer_name }}</option>
+                <option value="{{ $farmer->user->id }}">{{ $farmer->user->fname.' '.$farmer->user->lname }} {{ $farmer->farmer_name }}</option>
                 @endforeach
             </select>
         </div>

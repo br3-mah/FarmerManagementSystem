@@ -25,10 +25,10 @@
                             @foreach ($farmers as $farmer)
                                 <tr>
                                     <td class="py-1">
-                                        <img src="../../images/faces/face1.jpg" alt="image">
+                                        <img src="https://gimgs2.nohat.cc/thumb/f/350/farmer-png-using-agricultural-technology-transparent-background--comrawpixel2808671.jpg" alt="image">
                                     </td>
-                                    <td>{{ $farmer->user->name }}</td>
-                                    <td>{{ $farmer->farm_name }}</td>
+                                    <td>{{ $farmer->user->fname.' '.$farmer->user->lname }}</td>
+                                    <td> <b>{{ $farmer->farm_name }}</b> </td>
                                     <td>{{ $farmer->farm_address }}</td>
                                     <td>{{ $farmer->type_of_farming }}</td>
                                     <td>

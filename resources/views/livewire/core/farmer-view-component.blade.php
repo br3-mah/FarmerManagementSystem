@@ -1,91 +1,153 @@
-<div class="bg-gray-50 min-h-screen py-8">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Header with Profile Summary -->
-        <div class="bg-white rounded-xl shadow-sm overflow-hidden mb-6">
-            <div class="px-6 py-8 border-b border-gray-100">
-                <div class="flex items-center space-x-6">
-                    <div class="bg-green-100 rounded-full p-4 flex items-center justify-center">
-                        <img src="default-profile.png" alt="Profile Image" class="w-16 h-16 rounded-full">
-                    </div>
-                    <div class="flex-1">
-                        <h1 class="text-2xl font-bold text-gray-900">{{ $farmer->user->name }}</h1>
-                        <div class="mt-2 flex items-center text-sm text-gray-500">
-                            <span class="material-icons">home</span> {{ $farmer->farm_name }}
-                        </div>
-                        <div class="mt-1 flex items-center text-sm text-gray-500">
-                            <span class="material-icons">email</span> {{ $farmer->user->email }}
-                        </div>
-                    </div>
-                    <button type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-                        Edit
-                    </button>
-                </div>
+
+<div class="content-wrapper">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css" rel="stylesheet">
+  <style>
+    .hover-scale:hover {
+      transform: scale(1.01);
+      transition: transform 0.2s ease-in-out;
+    }
+    .profile-image {
+      width: 64px;
+      height: 64px;
+    }
+    .icon-container {
+      width: 40px;
+      height: 40px;
+    }
+    .material-icons {
+      font-size: 20px;
+    }
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+  </style>
+
+  <div class="container py-4">
+    <!-- Profile Card -->
+    <div class="card mb-4 hover-scale">
+      <div class="card-body border-bottom">
+        <div class="d-flex align-items-center gap-4">
+          <div class="position-relative">
+            <div class="position-absolute top-0 start-0 w-100 h-100 bg-success bg-opacity-10 rounded-circle pulse"></div>
+            <img src="https://img.freepik.com/free-vector/farmer-using-agricultural-technology_53876-120543.jpg" alt="Profile" class="profile-image rounded-circle border border-4 border-white position-relative">
+          </div>
+          <div class="flex-grow-1">
+            <h1 class="h1 mb-2">{{ $farmer->user->name }}</h1>
+            <div class="d-flex align-items-center text-muted mb-1">
+              <i class="material-icons text-success me-2">home</i>
+              <span>{{ $farmer->farm_name }}</span>
             </div>
-
-            <!-- Farm Information Card -->
-            <div class="px-6 py-6">
-                <h3 class="text-lg font-medium text-gray-900 mb-4">Farm Details</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="flex items-center p-4 bg-gray-50 rounded-lg">
-                        <div class="flex-shrink-0 h-10 w-10 flex items-center justify-center rounded-md bg-green-500 text-white">
-                            <span class="material-icons">area_chart</span>
-                        </div>
-                        <div class="ml-4">
-                            <div class="text-sm font-medium text-gray-900">Farm Size</div>
-                            <div class="text-sm text-gray-500">{{ $farmer->farm_size }} acres</div>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center p-4 bg-gray-50 rounded-lg">
-                        <div class="flex-shrink-0 h-10 w-10 flex items-center justify-center rounded-md bg-green-500 text-white">
-                            <span class="material-icons">location_on</span>
-                        </div>
-                        <div class="ml-4">
-                            <div class="text-sm font-medium text-gray-900">Location</div>
-                            <div class="text-sm text-gray-500">{{ $farmer->farm_address }}</div>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center p-4 bg-gray-50 rounded-lg">
-                        <div class="flex-shrink-0 h-10 w-10 flex items-center justify-center rounded-md bg-green-500 text-white">
-                            <span class="material-icons">nature_people</span>
-                        </div>
-                        <div class="ml-4">
-                            <div class="text-sm font-medium text-gray-900">Farming Type</div>
-                            <div class="text-sm text-gray-500">{{ $farmer->type_of_farming }}</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="d-flex align-items-center text-muted">
+              <i class="material-icons text-success me-2">email</i>
+              <span>{{ $farmer->user->email }}</span>
             </div>
+          </div>
+          <a href="{{ route('efarmers', ['id'=>$farmer->id ]) }}" class="btn btn-outline-success d-flex align-items-center gap-2">
+            <i class="material-icons">edit</i>
+            <span>Edit Profile</span>
+          </a>
         </div>
+      </div>
 
-        <!-- Financial Information Card -->
-        <div class="bg-white rounded-xl shadow-sm overflow-hidden">
-            <div class="px-6 py-6">
-                <h3 class="text-lg font-medium text-gray-900 mb-4">Financial Information</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="flex items-center p-4 bg-gray-50 rounded-lg">
-                        <div class="flex-shrink-0 h-10 w-10 flex items-center justify-center rounded-md bg-blue-500 text-white">
-                            <span class="material-icons">monetization_on</span>
-                        </div>
-                        <div class="ml-4">
-                            <div class="text-sm font-medium text-gray900">Mobile Money</div>
-                            <div class="text-sm text-gray500">{{ $farmer->mobile_money_number }}</div>
-                        </div>
-                    </div>
+      <!-- Farm Details -->
+      <div class="card-body">
+        <h3 class="h5 mb-4 d-flex align-items-center">
+          <i class="material-icons text-success me-2">grass</i>
+          Farm Details
+        </h3>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="bg-light rounded p-3 h-100">
+              <div class="d-flex align-items-center">
+                <div class="icon-container bg-success rounded d-flex align-items-center justify-content-center me-3">
+                  <i class="material-icons text-white">area_chart</i>
+                </div>
+                <div>
+                  <div class="fw-medium">Farm Size</div>
+                  <div class="text-success">{{ $farmer->farm_size }} acres</div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-                    <div class="flex items-center p=4 bg-gray=50 rounded-lg">
-                        <diV clasS= "flex-shrink=0 h=10 w=10 flex items=center justify=center rounded-md bg=blue=500 text=white ">
-                            <span clasS= "material-icons ">account_balance</span >
-                        </diV >
-                        <diV clasS= "ml=4 ">
-                            <diV clasS= "text=sm font-medium text=gray900 ">Bank Details</diV >
-                            <diV clasS= "text=sm text=gray500 ">{{ $farmer->bank_name }}</diV >
-                            <diV clasS= "text=sm text=gray500 ">Acc: {{ $farmer->bank_account_number }}</diV >
-                        </diV >
-                    </diV >
-                </diV >
-            </diV >
-        </diV >
-    </diV >
-</diV >
+          <div class="col-md-4">
+            <div class="bg-light rounded p-3 h-100">
+              <div class="d-flex align-items-center">
+                <div class="icon-container bg-success rounded d-flex align-items-center justify-content-center me-3">
+                  <i class="material-icons text-white">location_on</i>
+                </div>
+                <div>
+                  <div class="fw-medium">Location</div>
+                  <div class="text-success">{{ $farmer->farm_address }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="bg-light rounded p-3 h-100">
+              <div class="d-flex align-items-center">
+                <div class="icon-container bg-success rounded d-flex align-items-center justify-content-center me-3">
+                  <i class="material-icons text-white">nature_people</i>
+                </div>
+                <div>
+                  <div class="fw-medium">Farming Type</div>
+                  <div class="text-success">{{ $farmer->type_of_farming }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Financial Details -->
+    <div class="card hover-scale">
+      <div class="card-body">
+        <h3 class="h5 mb-4 d-flex align-items-center">
+          <i class="material-icons text-primary me-2">account_balance_wallet</i>
+          Financial Information
+        </h3>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="bg-light rounded p-3 h-100">
+              <div class="d-flex align-items-center">
+                <div class="icon-container bg-primary rounded d-flex align-items-center justify-content-center me-3">
+                  <i class="material-icons text-white">phone_android</i>
+                </div>
+                <div>
+                  <div class="fw-medium">Mobile Money</div>
+                  <div class="text-primary">{{ $farmer->mobile_money_number }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="bg-light rounded p-3 h-100">
+              <div class="d-flex align-items-center">
+                <div class="icon-container bg-primary rounded d-flex align-items-center justify-content-center me-3">
+                  <i class="material-icons text-white">account_balance</i>
+                </div>
+                <div>
+                  <div class="fw-medium">Bank Details</div>
+                  <div class="text-primary">{{ $farmer->bank_name }}</div>
+                  <div class="small text-muted">Acc: {{ $farmer->bank_account_number }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</div>

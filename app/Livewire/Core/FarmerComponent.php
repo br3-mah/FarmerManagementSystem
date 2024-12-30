@@ -24,7 +24,7 @@ class FarmerComponent extends Component
 
     public function render()
     {
-        $this->farmers = Farmer::with('user')->get();
+        $this->farmers = Farmer::with('user')->whereNot('is_prospect', 1)->get();
         return view('livewire.core.farmer-component')->layout('layouts.app');
     }
 

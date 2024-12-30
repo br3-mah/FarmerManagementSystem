@@ -3,6 +3,8 @@
 namespace App\Livewire\Core;
 
 use App\Models\Farmer;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 class ProspectComponent extends Component
@@ -23,7 +25,7 @@ class ProspectComponent extends Component
 
     public function render()
     {
-        $this->farmers = Farmer::with('user')->get();
+        $this->farmers = Farmer::with('user')->where('is_prospect', 1)->get();
         return view('livewire.core.prospect-component')->layout('layouts.app');
     }
 
@@ -50,6 +52,7 @@ class ProspectComponent extends Component
                 'farm_name' => $this->farm_name,
                 'farm_address' => $this->farm_address,
                 'type_of_farming' => $this->type_of_farming,
+                'is_prospect' => 1,
             ]);
 
             $this->showModal = false; // Close the modal

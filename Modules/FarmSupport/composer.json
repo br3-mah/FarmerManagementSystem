@@ -1,0 +1,31 @@
+{
+    "name": "nwidart/farmsupport",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\FarmSupport\\": "",
+            "Modules\\FarmSupport\\App\\": "app/",
+            "Modules\\FarmSupport\\Database\\Factories\\": "database/factories/",
+            "Modules\\FarmSupport\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\FarmSupport\\Tests\\": "tests/"
+        }
+    }
+}

@@ -25,7 +25,7 @@
                             @foreach ($farmers as $farmer)
                                 <tr>
                                     <td class="py-1">
-                                        <img src="../../images/faces/face1.jpg" alt="image">
+                                        <img src="https://img.freepik.com/free-vector/farmer-using-agricultural-technology_53876-120543.jpg" alt="image">
                                     </td>
                                     <td>{{ $farmer->user->fname }} {{ $farmer->user->lname }}</td>
                                     <td>{{ $farmer->farm_name }}</td>

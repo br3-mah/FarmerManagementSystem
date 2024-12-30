@@ -98,18 +98,22 @@
             </div>
           </li>
           <li class="nav-item nav-profile dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown2">
               <img src="https://img.freepik.com/premium-photo/3d-toy-farm-animals-icon-fun-educational-playset_762678-103778.jpg" alt="profile"/>
             </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item">
-                <i class="ti-settings text-primary"></i>
-                Settings
-              </a>
-              <a class="dropdown-item">
-                <i class="ti-power-off text-primary"></i>
-                Logout
-              </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown2">
+                <a href="{{ route('settings') }}" class="dropdown-item">
+                    <i class="ti-settings text-primary"></i>
+                    Settings
+                </a>
+                <form action="{{ route('logout') }}" method="POST" style="display: none;" id="logout-form">
+                    @csrf
+                </form>
+
+                <a class="dropdown-item" href="#" onclick="document.getElementById('logout-form').submit();">
+                    <i class="ti-power-off text-primary"></i>
+                    Logout
+                </a>
             </div>
           </li>
           <li class="nav-item nav-settings d-none d-lg-flex">
@@ -288,18 +292,7 @@
               </ul>
             </div>
           </li>
-           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
-              <i class="icon-bar-graph menu-icon"></i>
-              <span class="menu-title">Farmer Loans</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="charts">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Loan Requests</a></li>
-              </ul>
-            </div>
-          </li>
+
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
               <i class="icon-grid-2 menu-icon"></i>
@@ -386,8 +379,8 @@
   <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="{{ asset('js/dashboard.js') }}"></script>
-  <script src="{{ asset('js/dashboard.js') }}"></script>
+  {{-- <script src="{{ asset('js/dashboard.js') }}"></script>
+  <script src="{{ asset('js/dashboard.js') }}"></script> --}}
   <!-- End custom js for this page-->
 </body>
 
