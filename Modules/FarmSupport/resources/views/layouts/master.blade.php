@@ -19,7 +19,6 @@
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset('css/vertical-layout-light/style.css') }}">
-
     <link rel="shortcut icon" href="https://pbs.twimg.com/profile_images/1132282909379973121/wufxn9_i_400x400.png" />
 </head>
 <body>
@@ -339,6 +338,8 @@
             @endforeach
         </ul>
       </nav>
+
+
       <!-- partial -->
       <div class="main-panel">
 
@@ -360,6 +361,73 @@
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    // Select all elements with the data-toggle attribute
+    const toggleLinks = document.querySelectorAll('[data-toggle="collapse"]');
+
+    // Add necessary styles for animations
+    const style = document.createElement('style');
+    style.textContent = `
+        .collapse {
+            display: none;
+            transition: height 0.35s ease;
+        }
+        .collapse.show {
+            display: block;
+        }
+        .collapsing {
+            height: 0;
+            overflow: hidden;
+            transition: height 0.35s ease;
+        }
+    `;
+    document.head.appendChild(style);
+
+    toggleLinks.forEach(link => {
+        // Set initial ARIA attributes
+        const targetId = link.getAttribute('href')?.replace('#', '');
+        const targetElement = targetId ? document.getElementById(targetId) : null;
+
+        if (targetElement) {
+            link.setAttribute('aria-expanded', 'false');
+            link.setAttribute('aria-controls', targetId);
+            targetElement.setAttribute('aria-hidden', 'true');
+        }
+
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            if (!targetElement) return;
+
+            // Check if the target is already open
+            const isOpen = targetElement.classList.contains('show');
+
+            // Close all other collapsible elements (accordion behavior)
+            document.querySelectorAll('.collapse.show').forEach(element => {
+                if (element !== targetElement) {
+                    const control = document.querySelector(`[href="#${element.id}"]`);
+                    element.classList.remove('show');
+                    element.setAttribute('aria-hidden', 'true');
+                    control?.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Handle animation
+            if (isOpen) {
+                targetElement.classList.remove('show');
+                targetElement.setAttribute('aria-hidden', 'true');
+                this.setAttribute('aria-expanded', 'false');
+            } else {
+                targetElement.classList.add('show');
+                targetElement.setAttribute('aria-hidden', 'false');
+                this.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+});
+</script>
+
 
   <!-- plugins:js -->
   <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>

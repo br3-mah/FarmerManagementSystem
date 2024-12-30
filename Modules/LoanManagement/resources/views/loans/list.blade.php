@@ -3,7 +3,7 @@
 @section('content')
 <div class="content-wrapper">
     <div class="col-lg-12 col-md-12 bg-white p-4">
-        <h1>Loans</h1>
+        <h1>Farmer Loans</h1>
         <a href="{{ route('loanmanagement.create') }}" class="btn btn-primary shadow">Add Loan</a>
         <div class="card shadow-sm mt-2">
             <table class="table table-condensed">
@@ -20,7 +20,7 @@
                 <tbody>
                     @foreach ($loans as $loan)
                     <tr>
-                        <td>{{ $loan->farmer->user->name }}</td>
+                        <td>{{ $loan->farmer->user->fname.' '.$loan->farmer->user->lname }}</td>
                         <td>{{ $loan->loan_amount }}</td>
                         <td>{{ $loan->interest_rate }}%</td>
                         <td>{{ $loan->repayment_duration }} months</td>
