@@ -135,7 +135,7 @@
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h5 class="mb-0">Recent Loan Applications</h5>
                 <div class="d-flex gap-2">
-                    <a href="{{ route('loanmanagement.index') }}" class="btn btn-light">
+                    <a href="{{ route('loanmanagement.list') }}" class="btn btn-light">
                         View More
                     </a>
 

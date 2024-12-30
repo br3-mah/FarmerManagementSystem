@@ -91,7 +91,7 @@ class LoanManagementController extends Controller
     {
         $loan = Loan::findOrFail($id);
         $loan->update(['status' => $request->status]);
-        return redirect()->route('loanmanagement.index')->with('success', 'Loan status updated.');
+        return redirect()->route('loanmanagement.list')->with('success', 'Loan status updated.');
     }
 
     /**
@@ -101,6 +101,6 @@ class LoanManagementController extends Controller
     {
         $loan = Loan::findOrFail($id);
         $loan->update(['repaid_at' => now(), 'status' => 'repaid']);
-        return redirect()->route('loanmanagement.index')->with('success', 'Loan marked as repaid.');
+        return redirect()->route('loanmanagement.list')->with('success', 'Loan marked as repaid.');
     }
 }
