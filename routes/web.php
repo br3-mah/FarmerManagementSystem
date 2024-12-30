@@ -21,22 +21,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Redirect any root URL access to the login page if not logged in
 Route::get('/', function () {
-    return redirect()->route('login');
+    return view('auth.login');
 });
 
-// Login route
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Middleware to protect authenticated routes
-Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
     // Controllers
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    // Livewire Components
+    //Livewire Components
     Route::get('prospects', ProspectComponent::class)->name('prospects');
     Route::get('farmers', FarmerComponent::class)->name('farmers');
     Route::get('view-farmer', FarmerViewComponent::class)->name('vfarmers');
@@ -44,4 +39,5 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('settings', PackageComponent::class)->name('settings');
     Route::get('packages', PackageComponent::class)->name('packages');
     Route::post('packages', [PackageController::class, 'uploadModulePackage'])->name('upload-module');
+
 });
