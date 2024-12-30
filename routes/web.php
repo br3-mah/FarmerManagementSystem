@@ -45,8 +45,3 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('packages', PackageComponent::class)->name('packages');
     Route::post('packages', [PackageController::class, 'uploadModulePackage'])->name('upload-module');
 });
-
-// Redirect any unauthenticated access to the login route
-Route::fallback(function () {
-    return redirect()->route('login');
-});
