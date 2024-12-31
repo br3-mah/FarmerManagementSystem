@@ -22,6 +22,8 @@ Route::group([], function () {
     Route::prefix('loanmanagement')->group(function () {
         Route::get('/', [LoanManagementController::class, 'index'])->name('loanmanagement.index');
         Route::get('/list', [LoanManagementController::class, 'list'])->name('loanmanagement.list');
+        Route::get('/details', [LoanManagementController::class, 'show'])->name('loanmanagement.show');
+        Route::get('/edit', [LoanManagementController::class, 'edit'])->name('loanmanagement.edit');
         Route::get('/create', [LoanManagementController::class, 'create'])->name('loanmanagement.create');
         Route::post('/store', [LoanManagementController::class, 'store'])->name('loanmanagement.store');
         Route::get('/history/{farmerId}', [LoanManagementController::class, 'history'])->name('loanmanagement.history');

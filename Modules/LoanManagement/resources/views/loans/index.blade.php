@@ -156,7 +156,7 @@
                     <tbody>
                         @foreach ($loans as $loan)
                         <tr>
-                            <td>{{ $loan?->farmer?->user?->fname.' '.$loan?->farmer?->user?->lname }}</td>
+                            <td>{{ $loan?->farmer?->fname.' '.$loan?->farmer?->lname}}</td>
                             <td>K{{ number_format($loan->loan_amount, 2) }}</td>
                             <td>{{ $loan->interest_rate }}%</td>
                             <td>{{ $loan->repayment_duration }} months</td>

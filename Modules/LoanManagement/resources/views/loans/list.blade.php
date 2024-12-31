@@ -21,7 +21,7 @@
                 <tbody>
                     @foreach ($loans as $loan)
                     <tr>
-                        <td>{{ $loan->farmer->user->fname.' '.$loan->farmer->user->lname }}</td>
+                        <td>{{ $loan->farmer->fname.' '.$loan->farmer->lname }}</td>
                         <td>K{{ number_format($loan->loan_amount, 2) }}</td>
                         <td>{{ $loan->interest_rate }}%</td>
                         <td>{{ $loan->repayment_duration }} months</td>
@@ -59,6 +59,9 @@
                             @else
                                 <button disabled class="btn-xs btn btn-default"><b>CLOSED</b></button>
                             @endif
+                            <a href="{{ route('loanmanagement.show',['loan'=>$loan->id]) }}" class="btn btn-sm btn-outline-primary me-1">
+                                <i class="fa fa-eye"></i>
+                            </a>
                         </td>
                     </tr>
                     @endforeach

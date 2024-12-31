@@ -29,6 +29,7 @@ class LoanManagementController extends Controller
                $repaidLoans = Loan::where('status', 'repaid')->count();
 
                $loans = Loan::with('farmer')->get();
+
                // Pass the data to the view
                return view('loanmanagement::loans.index', compact('loans','totalLoans', 'activeFarmers', 'pendingLoans', 'repaidLoans'));
 
@@ -38,7 +39,7 @@ class LoanManagementController extends Controller
      */
     public function list()
     {
-        $loans = Loan::with('farmer.user')->get();
+        $loans = Loan::with('farmer')->get();
         return view('loanmanagement::loans.list', compact('loans'));
     }
 
@@ -82,6 +83,13 @@ class LoanManagementController extends Controller
         } catch (\Throwable $th) {
             dd($th);
         }
+    }
+
+    public function show(){
+        $id = $_GET['loan'];
+        $loan = Loan::with('farmer')->first();
+
+        return view('loanmanagement::loans.show', compact('loan'));
     }
 
     /**

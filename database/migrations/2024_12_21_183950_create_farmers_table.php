@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('farmers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable(); // Name of the farm
+            $table->date('dob')->nullable(); // date of birth of the farmer
+            $table->string('phone')->nullable(); // phone of the farmer
+            $table->string('committee')->nullable(); // phone of the farmer
+            $table->string('country')->nullable(); // phone of the farmer
+            $table->string('gender')->nullable(); // phone of the farmer
             $table->string('farm_name')->nullable(); // Name of the farm
             $table->text('farm_address')->nullable(); // Address of the farm
             $table->decimal('farm_size', 8, 2)->nullable(); // In acres or hectares
