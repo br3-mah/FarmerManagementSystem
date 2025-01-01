@@ -48,13 +48,23 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function recentJson(){
+    public function recentJson()
+    {
         $farmers = Farmer::with('user')->get();
 
-        // Return data as JSON response
+        // Flatten and merge Farmer and User data into a single array
+        $flattenedFarmers = $farmers->map(function ($farmer) {
+            return array_merge(
+                $farmer->toArray(),
+                $farmer->user ? $farmer->user->toArray() : []
+            );
+        });
+
+        // Return the flattened data as JSON response
         return response()->json([
-            'farmers' => $farmers,
+            'farmers' => $flattenedFarmers,
         ]);
     }
+
 
 }
