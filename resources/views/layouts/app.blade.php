@@ -20,7 +20,7 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="css/vertical-layout-light/style.css">
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
     @livewireStyles
 
     <link rel="shortcut icon" href="https://pbs.twimg.com/profile_images/1132282909379973121/wufxn9_i_400x400.png" />
