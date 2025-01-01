@@ -22,4 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('stats', [DashboardController::class, 'statsJson'])->name('stats');
 Route::get('recent-farmers', [DashboardController::class, 'recentJson'])->name('farmers');
-Route::get('farmer', [FarmerApiController::class, 'store'])->name('store');
+Route::post('farmer', [FarmerApiController::class, 'store'])->name('store');
