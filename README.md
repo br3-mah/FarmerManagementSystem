@@ -3,7 +3,7 @@
 <h1>Prospect Farmers App Setup</h1>
 <h4>Getting the System</h4>
 <pre>
-git remote add origin https://github.com/br3-mah/ProspectFarmersApp.git
+git remote add origin https://github.com/br3-mah/FarmerManagementSystem.git
 
 git fetch
 
