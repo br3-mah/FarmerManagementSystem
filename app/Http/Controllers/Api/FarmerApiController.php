@@ -7,6 +7,7 @@ use App\Models\Farmer;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class FarmerApiController extends Controller
@@ -32,48 +33,30 @@ class FarmerApiController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate incoming data
-        $validator = Validator::make($request->all(), [
-            'farmName' => 'required|string|max:255',
-            'farmAddress' => 'required|string|max:255',
-            'farmSize' => 'required|string|max:255',
-            'typeOfFarming' => 'required|string|max:255',
-            'phoneNumber' => 'required|string|max:15',
-            'farmerLocation' => 'nullable|string|max:255', // Optional field for location
-            'farmerName' => 'nullable|string|max:255', // Optional field for farmer's name
-            'mobileMoneyNumber' => 'nullable|string|max:20',
-            'bankAccountNumber' => 'nullable|string|max:20',
-            'bankName' => 'nullable|string|max:255',
-            'email' => 'required|email', // email is now required based on incoming data
-        ]);
+            try {
 
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 400);
-        }
-
-        // Get the authenticated user (assuming you're using a token-based authentication)
-        $user = auth()->user(); // Assuming the user is authenticated via API tokens
-
-        // Find if a farmer already exists for this user
-        $farmer = $user->farmer;
-
-        // If farmer exists, update, else create a new farmer
-        if ($farmer) {
-            // Update the existing farmer
-            $farmer->update([
-                'farm_name' => $request->farmName,
-                'farm_address' => $request->farmAddress,
-                'farm_size' => $request->farmSize,
-                'type_of_farming' => $request->typeOfFarming,
-                'phone' => $request->phoneNumber,
-                'farmer_location' => $request->farmerLocation,
-                'farmer_name' => $request->farmerName,
-                'mobile_money_number' => $request->mobileMoneyNumber,
-                'bank_account_number' => $request->bankAccountNumber,
-                'bank_name' => $request->bankName,
-                'is_prospect' => $request->isProspect,
+            // Validate incoming data
+            $validator = Validator::make($request->all(), [
+                'farmName' => 'required|string|max:255',
+                'farmAddress' => 'required|string|max:255',
+                'farmSize' => 'required|string|max:255',
+                'typeOfFarming' => 'required|string|max:255',
+                'phoneNumber' => 'required|string|max:15',
+                'farmerLocation' => 'nullable|string|max:255', // Optional field for location
+                'farmerName' => 'nullable|string|max:255', // Optional field for farmer's name
+                'mobileMoneyNumber' => 'nullable|string|max:20',
+                'bankAccountNumber' => 'nullable|string|max:20',
+                'bankName' => 'nullable|string|max:255',
+                'email' => 'required|email', // email is now required based on incoming data
             ]);
-        } else {
+
+            if ($validator->fails()) {
+                return response()->json(['errors' => $validator->errors()], 400);
+            }
+
+            // Get the authenticated user (assuming you're using a token-based authentication)
+            // $user = User::where('email', $request->email)->first(); // Assuming the user is authenticated via API tokens
+
             $usr = User::create([
                 'fname' => $request->fName,
                 'lname' => $request->lName,
@@ -97,10 +80,12 @@ class FarmerApiController extends Controller
                 'is_prospect' => $request->isProspect,
             ]);
             $farmer->save();
-        }
 
-        // Return response after creating or updating the farmer
-        return response()->json(['message' => 'Farmer created or updated successfully!', 'farmer' => $farmer], 200);
+            // Return response after creating or updating the farmer
+            return response()->json(['message' => 'Farmer created or updated successfully!', 'farmer' => $farmer], 200);
+        } catch (\Throwable $th) {
+            Log::info($th);
+        }
     }
 
     /**
