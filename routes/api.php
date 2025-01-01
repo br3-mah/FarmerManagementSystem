@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\FarmerApiController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('stats', [DashboardController::class, 'statsJson'])->name('stats');
 Route::get('recent-farmers', [DashboardController::class, 'recentJson'])->name('farmers');
+Route::get('farmer', [FarmerApiController::class, 'store'])->name('store');
