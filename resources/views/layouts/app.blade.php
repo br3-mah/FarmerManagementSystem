@@ -460,7 +460,7 @@
   <!-- Custom js for this page-->
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
-  <script src="util/public/livewire/livewire.js?id=02b08710"></script>
+  <script src="public/livewire/livewire.js?id=02b08710"></script>
   @livewireScripts
   <!-- End custom js for this page-->
 </body>
